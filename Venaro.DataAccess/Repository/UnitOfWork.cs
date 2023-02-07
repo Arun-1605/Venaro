@@ -17,16 +17,17 @@ namespace Venaro.DataAccess.Repository
         public UnitOfWork(ApplicationDbContext db) 
         {
             _db = db;
-            
-            
-            clothes = new ClothRepository(_db);
+            Clothes = new ClothRepository(_db);
+			Category = new CategoryRepository(_db);
         }
       
-        public IClothRepository clothes {  get; private set; }
+        public IClothRepository Clothes {  get; private set; }
+      
+		public ICategoryRepository Category { get; private set; }
 
-               public void Save()
-        {
-            _db.SaveChanges();
-        }
-    }
+		public void Save()
+		{
+			_db.SaveChanges();
+		}
+	}
 }
