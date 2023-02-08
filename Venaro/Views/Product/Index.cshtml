@@ -12,18 +12,18 @@
 
 						<div class="card-body">
 							<div class="pl-1">
-								<p class="card-title h5 text-primary">@product.Name</p>
-								<p class="card-title text-info">by <b>@product.IsSold</b></p>
+								<span><p class="card-title h5 text-primary">@product.Name (@product.Category.Name.ToString())</p></span>
+								@*<p class="card-title text-info">IsS <b>@product.IsSold</b></p>*@
+								<div class="pl-1">
+									<p class="h20 text-danger">Price: <strike><b>Rs.@product.ListPrice.ToString("0.00")</b></strike></p>
+								</div>
+								<p class=" h5 text-success">OfferPrice:<b>Rs.@product.Price</b></p>
 							</div>
-							<div class="pl-1">
-								<p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
-							</div>
-
 						</div>
 					</div>
 					<div>
 						<a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
-							Details
+							Buy
 						</a>
 					</div>
 				</div>

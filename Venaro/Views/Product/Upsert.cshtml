@@ -11,12 +11,12 @@
 					<h2 class="text-primary">@(Model.Clothes.Id != 0 ? "Update" : "Create")  Product</h2>
 			<hr />
 		</div>
-		@*<div asp-validation-summary="All"></div>*@
-@*		<div class="mb-3">
-			<label asp-for="Title"></label>
-			<input asp-for="Product.Title" class="form-control" />
-			<span asp-validation-for="Product.Title" class="text-danger"></span>
-		</div>*@
+		<div asp-validation-summary="All"></div>
+		<div class="mb-3">
+			<label asp-for="Clothes.Name"></label>
+			<input asp-for="Clothes.Name" class="form-control" />
+			<span asp-validation-for="Clothes.Name" class="text-danger"></span>
+		</div>
 		<div class="mb-3">
 					<label asp-for="Clothes.Description"></label>
 					<textarea asp-for="Clothes.Description" rows="3" class="form-control"></textarea>
@@ -43,13 +43,13 @@
 			<span asp-validation-for="Product.Price100" class="text-danger"></span>
 		</div>*@
 		<div class="mb-3">
-					<label asp-for="Clothes"></label>
+					<label asp-for="Clothes.Image"></label>
 			<input type="file" id="uploadBox" name="file" class="form-control" />
 		</div>
 
 		<div class="mb-3 col-6">
 					<label asp-for="Clothes.Category"></label>
-					<select asp-for="Clothes.CategoryId" asp-items="@Model.Category" class="form-select">
+					<select asp-for="Clothes.Category.Name" asp-items="@Model.Category" class="form-select">
 				<option disabled selected>--Select Category--</option>
 			</select>
 					<span asp-validation-for="Clothes.CategoryId" class="text-danger"></span>

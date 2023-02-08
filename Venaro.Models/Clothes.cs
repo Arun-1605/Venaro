@@ -1,4 +1,6 @@
-﻿namespace Venaro.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+namespace Venaro.Models
 {
     public class Clothes
     {
@@ -6,6 +8,7 @@
 
         public string Name { get; set; }
 
+        [ValidateNever]
         public string Image { get; set; }
 
         public string Description { get; set; }
@@ -20,7 +23,7 @@
         /// <summary>
         /// Navigation Property
         /// </summary>
-
+        [ValidateNever]
 		public Category Category { get; set; }  
 
         public int CategoryId { get; set; }
