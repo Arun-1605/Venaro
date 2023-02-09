@@ -4,7 +4,7 @@ using Venaro.DataAccess.Repository.IRepository;
 using Venaro.Models;
 using Venaro.Models.ViewModel;
 
-namespace Venaro.Controllers
+namespace Venaro.Area.Admin.Controllers
 {
     public class ProductController : Controller
     {
@@ -20,9 +20,9 @@ namespace Venaro.Controllers
 
         public IActionResult Index()
         {
-			IEnumerable<Clothes> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+            IEnumerable<Clothes> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
 
-			return View(productList);
+            return View(productList);
         }
 
         //GET

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Venaro.Models;
 
-namespace Venaro.Controllers
+namespace Venaro.Area.Admin.Controllers
 {
     public class HomeController : Controller
     {
