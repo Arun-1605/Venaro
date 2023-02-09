@@ -12,6 +12,8 @@ namespace Venaro.DataAccess.Repository.IRepository
 
         ICategoryRepository Category { get; }
 
+        ICompanyRepository Company { get; }
+
 		void Save();
     }
 }

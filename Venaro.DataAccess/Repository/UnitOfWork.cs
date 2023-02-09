@@ -19,13 +19,16 @@ namespace Venaro.DataAccess.Repository
             _db = db;
             Clothes = new ClothRepository(_db);
 			Category = new CategoryRepository(_db);
+            Company = new CompanyRepository(_db);
         }
       
         public IClothRepository Clothes {  get; private set; }
       
 		public ICategoryRepository Category { get; private set; }
 
-		public void Save()
+        public ICompanyRepository Company { get; private set; }
+
+        public void Save()
 		{
 			_db.SaveChanges();
 		}

@@ -6,7 +6,8 @@ using Venaro.Models.ViewModel;
 
 namespace Venaro.Area.Admin.Controllers
 {
-    public class ProductController : Controller
+	[Area("Admin")]
+	public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostEnvironment;
