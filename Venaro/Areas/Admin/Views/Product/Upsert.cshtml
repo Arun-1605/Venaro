@@ -48,8 +48,8 @@
 		</div>
 
 		<div class="mb-3 col-6">
-					<label asp-for="Clothes.Category"></label>
-					<select asp-for="Clothes.Category.Name" asp-items="@Model.Category" class="form-select">
+					<label asp-for="Clothes.CategoryId"></label>
+					<select asp-for="Clothes.CategoryId" asp-items="@Model.Category" class="form-select">
 				<option disabled selected>--Select Category--</option>
 			</select>
 					<span asp-validation-for="Clothes.CategoryId" class="text-danger"></span>

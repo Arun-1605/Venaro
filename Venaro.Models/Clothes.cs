@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Venaro.Models
 {
@@ -20,13 +21,16 @@ namespace Venaro.Models
 		public bool IsSold { get; set; }
 
 
-        /// <summary>
-        /// Navigation Property
-        /// </summary>
-        [ValidateNever]
-		public Category Category { get; set; }  
+		/// <summary>
+		/// Navigation Property
+		/// </summary>
+		/// 
 
-        public int CategoryId { get; set; }
+		[ForeignKey("CategoryId")]
+		public int CategoryId { get; set; }
+
+		[ValidateNever]
+		public Category Category { get; set; }  
 
 
 	}

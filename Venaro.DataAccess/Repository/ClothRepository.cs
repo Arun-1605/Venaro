@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,24 @@ namespace Venaro.DataAccess.Repository
 
         public void Update(Clothes obj)
         {
+           var objfromDb = _db.Clothes.FirstOrDefault(u => u.Id == obj.Id);
+
+            if (objfromDb != null)
+            {
+                objfromDb.Name = obj.Name;
+                objfromDb.Description = obj.Description;
+                objfromDb.Category = obj.Category;
+                objfromDb.Price = obj.Price;
+                objfromDb.ListPrice = obj.ListPrice;
+                objfromDb.IsSold = obj.IsSold;
+                
+
+                if(obj.Image != null)
+                {
+                    objfromDb.Image = obj.Image;
+                }
+
+            }
             
         }
     }
