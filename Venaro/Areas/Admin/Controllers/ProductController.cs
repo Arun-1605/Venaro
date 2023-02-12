@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Advanced;
+using SixLabors.ImageSharp.Processing;
 using Venaro.DataAccess.Repository.IRepository;
 using Venaro.Models;
 using Venaro.Models.ViewModel;
@@ -72,6 +75,7 @@ namespace Venaro.Area.Admin.Controllers
                     var uploads = Path.Combine(wwwRootPath, @"images\products");
                     var extension = Path.GetExtension(file.FileName);
 
+
                     if (obj.Clothes.Image != null)
                     {
                         var oldImagePath = Path.Combine(wwwRootPath, obj.Clothes.Image.TrimStart('\\'));
@@ -83,7 +87,14 @@ namespace Venaro.Area.Admin.Controllers
 
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
-                        file.CopyTo(fileStreams);
+
+						using var image = Image.Load(file.OpenReadStream());
+						image.Mutate(x => x.Resize(256, 256));
+
+
+                        image.SaveAsJpeg(fileStreams);
+                        //obj.Clothes.Image= image.Save(@"\images\products\" + fileName + extension);
+                        //file.CopyTo(fileStreams);
                     }
                     obj.Clothes.Image = @"\images\products\" + fileName + extension;
 
