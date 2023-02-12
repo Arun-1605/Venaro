@@ -26,51 +26,53 @@ namespace Venaro.Areas.Customer
             return View(productList);
         }
 
-        //public IActionResult Details(int productId)
-        //{
-        //    ShoppingCart cartObj = new()
-        //    {
-        //        Count = 1,
-        //        ProductId = productId,
-        //        Product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId, includeProperties: "Category,CoverType"),
-        //    };
+        public IActionResult Details(int productid)
+        {
+            ShoppingCart cartobj = new()
+            {
+                Count = 1,
+                //productid = productid,
+                Product = _unitOfWork.Clothes.GetFirstOrDefault(u => u.Id == productid, includeProperties: "Category"),
+            };
 
-        //    return View(cartObj);
-        //}
+            return View (cartobj);
+        }
+            //    return View(cartObj);
+            //}
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[Authorize]
-        //public IActionResult Details(ShoppingCart shoppingCart)
-        //{
-        //    var claimsIdentity = (ClaimsIdentity)User.Identity;
-        //    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-        //    shoppingCart.ApplicationUserId = claim.Value;
+            //[HttpPost]
+            //[ValidateAntiForgeryToken]
+            //[Authorize]
+            //public IActionResult Details(ShoppingCart shoppingCart)
+            //{
+            //    var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            //    shoppingCart.ApplicationUserId = claim.Value;
 
-        //    ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(
-        //        u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
-
-
-        //    if (cartFromDb == null)
-        //    {
-
-        //        _unitOfWork.ShoppingCart.Add(shoppingCart);
-        //        _unitOfWork.Save();
-        //        HttpContext.Session.SetInt32(SD.SessionCart,
-        //            _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
-        //    }
-        //    else
-        //    {
-        //        _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
-        //        _unitOfWork.Save();
-        //    }
+            //    ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+            //        u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
 
 
-        //    return RedirectToAction(nameof(Index));
-        //}
+            //    if (cartFromDb == null)
+            //    {
+
+            //        _unitOfWork.ShoppingCart.Add(shoppingCart);
+            //        _unitOfWork.Save();
+            //        HttpContext.Session.SetInt32(SD.SessionCart,
+            //            _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
+            //    }
+            //    else
+            //    {
+            //        _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
+            //        _unitOfWork.Save();
+            //    }
 
 
-        public IActionResult Privacy()
+            //    return RedirectToAction(nameof(Index));
+            //}
+
+
+            public IActionResult Privacy()
         {
             return View();
         }
