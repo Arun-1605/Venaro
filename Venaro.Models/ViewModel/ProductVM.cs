@@ -10,7 +10,7 @@ namespace Venaro.Models.ViewModel
 {
 	public class ProductVM
 	{
-		public Clothes Clothes { get; set; }
+		public Product Products { get; set; }
 
 		[ValidateNever]
 		public IEnumerable<SelectListItem> Category { get; set; }

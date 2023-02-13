@@ -17,5 +17,9 @@ namespace Venaro.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public DbSet<Company> Company { get; set; }    
+
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }

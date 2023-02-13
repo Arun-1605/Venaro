@@ -1,36 +1,36 @@
 ﻿@model Venaro.Models.ViewModel.ProductVM
 
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
-	<input asp-for="Clothes.Id" hidden />
-	<input asp-for="Clothes.Image" hidden />
+	<input asp-for="Products.Id" hidden />
+	<input asp-for="Products.Image" hidden />
 
 	<div class="row">
 		<div class="col-10">
 			<div class="border p-3 mt-4 row">
 		<div class="col-12 pb-2">
-					<h2 class="text-primary">@(Model.Clothes.Id != 0 ? "Update" : "Create")  Product</h2>
+					<h2 class="text-primary">@(Model.Products.Id != 0 ? "Update" : "Create")  Product</h2>
 			<hr />
 		</div>
 		<div asp-validation-summary="All"></div>
 		<div class="mb-3">
-			<label asp-for="Clothes.Name"></label>
-			<input asp-for="Clothes.Name" class="form-control" />
-			<span asp-validation-for="Clothes.Name" class="text-danger"></span>
+			<label asp-for="Products.Name"></label>
+			<input asp-for="Products.Name" class="form-control" />
+			<span asp-validation-for="Products.Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-					<label asp-for="Clothes.Description"></label>
-					<textarea asp-for="Clothes.Description" rows="3" class="form-control"></textarea>
-					<span asp-validation-for="Clothes.Description" class="text-danger"></span>
+					<label asp-for="Products.Description"></label>
+					<textarea asp-for="Products.Description" rows="3" class="form-control"></textarea>
+					<span asp-validation-for="Products.Description" class="text-danger"></span>
 		</div>
 		<div class="mb-3 col-6">
-					<label asp-for="Clothes.ListPrice"></label>
-					<input asp-for="Clothes.ListPrice" class="form-control" />
-					<span asp-validation-for="Clothes.ListPrice" class="text-danger"></span>
+					<label asp-for="Products.ListPrice"></label>
+					<input asp-for="Products.ListPrice" class="form-control" />
+					<span asp-validation-for="Products.ListPrice" class="text-danger"></span>
 		</div>
 		<div class="mb-3 col-6">
-					<label asp-for="Clothes.Price"></label>
-					<input asp-for="Clothes.Price" class="form-control" />
-					<span asp-validation-for="Clothes.Price" class="text-danger"></span>
+					<label asp-for="Products.Price"></label>
+					<input asp-for="Products.Price" class="form-control" />
+					<span asp-validation-for="Products.Price" class="text-danger"></span>
 		</div>
 @*		<div class="mb-3 col-6">
 			<label asp-for="Product.Price50"></label>
@@ -43,19 +43,19 @@
 			<span asp-validation-for="Product.Price100" class="text-danger"></span>
 		</div>*@
 		<div class="mb-3">
-					<label asp-for="Clothes.Image"></label>
+					<label asp-for="Products.Image"></label>
 			<input type="file" id="uploadBox" name="file" class="form-control" />
 		</div>
 
 		<div class="mb-3 col-6">
-					<label asp-for="Clothes.CategoryId"></label>
-					<select asp-for="Clothes.CategoryId" asp-items="@Model.Category" class="form-select">
+					<label asp-for="Products.CategoryId"></label>
+					<select asp-for="Products.CategoryId" asp-items="@Model.Category" class="form-select">
 				<option disabled selected>--Select Category--</option>
 			</select>
-					<span asp-validation-for="Clothes.CategoryId" class="text-danger"></span>
+					<span asp-validation-for="Products.CategoryId" class="text-danger"></span>
 		</div>
 		<div class="col-12">
-					@if (Model.Clothes.Id != 0)
+					@if (Model.Products.Id != 0)
 			{
 				<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
 			}
@@ -71,7 +71,7 @@
 	</div>
 		</div>
 		<div class="col-2 pt-4">
-			<img src="@Model.Clothes.Image"
+			<img src="@Model.Products.Image"
 			width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
 		</div>
 	</div>

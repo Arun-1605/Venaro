@@ -10,7 +10,7 @@ using Venaro.Models;
 
 namespace Venaro.DataAccess.Repository
 {
-    public class ClothRepository : Repository<Clothes>, IClothRepository
+    public class ClothRepository : Repository<Product>, IClothRepository
     {
         private ApplicationDbContext _db;
 
@@ -20,7 +20,7 @@ namespace Venaro.DataAccess.Repository
         }
 
 
-        public void Update(Clothes obj)
+        public void Update(Product obj)
         {
            var objfromDb = _db.Clothes.FirstOrDefault(u => u.Id == obj.Id);
 

@@ -21,21 +21,37 @@ namespace Venaro.Areas.Customer
 
         public IActionResult Index()
         {
-            IEnumerable<Clothes> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+            IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
 
             return View(productList);
         }
 
-        public IActionResult Details(int productid)
+        public IActionResult Details(int productId)
         {
-            ShoppingCart cartobj = new()
+            ShoppingCart obj = new()
             {
-                Count = 1,
-                //productid = productid,
-                Product = _unitOfWork.Clothes.GetFirstOrDefault(u => u.Id == productid, includeProperties: "Category"),
+                Count=1,
+                ProductId= productId,
+                Product = _unitOfWork.Clothes.GetFirstOrDefault(u => u.Id== productId, includeProperties: "Category")
             };
+            return View(obj);
 
-            return View (cartobj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            shoppingCart.ApplicationUserId = claim.Value;
+
+            _unitOfWork.ShoppingCart.Add(shoppingCart);
+            _unitOfWork.Save();
+          
+            return RedirectToAction ("Index");
         }
             //    return View(cartObj);
             //}

@@ -24,7 +24,7 @@ namespace Venaro.Area.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Clothes> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+            IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
 
             return View(productList);
         }
@@ -34,7 +34,7 @@ namespace Venaro.Area.Admin.Controllers
         {
             ProductVM productVM = new()
             {
-                Clothes = new(),
+                Products = new(),
                 Category = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
@@ -51,7 +51,7 @@ namespace Venaro.Area.Admin.Controllers
             }
             else
             {
-                productVM.Clothes = _unitOfWork.Clothes.GetFirstOrDefault(u => u.Id == id);
+                productVM.Products = _unitOfWork.Clothes.GetFirstOrDefault(u => u.Id == id);
                 return View(productVM);
 
                 //update product
@@ -76,9 +76,9 @@ namespace Venaro.Area.Admin.Controllers
                     var extension = Path.GetExtension(file.FileName);
 
 
-                    if (obj.Clothes.Image != null)
+                    if (obj.Products.Image != null)
                     {
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.Clothes.Image.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.Products.Image.TrimStart('\\'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
@@ -96,16 +96,16 @@ namespace Venaro.Area.Admin.Controllers
                         //obj.Clothes.Image= image.Save(@"\images\products\" + fileName + extension);
                         //file.CopyTo(fileStreams);
                     }
-                    obj.Clothes.Image = @"\images\products\" + fileName + extension;
+                    obj.Products.Image = @"\images\products\" + fileName + extension;
 
                 }
-                if (obj.Clothes.Id == 0)
+                if (obj.Products.Id == 0)
                 {
-                    _unitOfWork.Clothes.Add(obj.Clothes);
+                    _unitOfWork.Clothes.Add(obj.Products);
                 }
                 else
                 {
-                    _unitOfWork.Clothes.Update(obj.Clothes);
+                    _unitOfWork.Clothes.Update(obj.Products);
                 }
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";

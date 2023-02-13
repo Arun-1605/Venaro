@@ -20,6 +20,10 @@ namespace Venaro.DataAccess.Repository
             Clothes = new ClothRepository(_db);
 			Category = new CategoryRepository(_db);
             Company = new CompanyRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
+
+
         }
       
         public IClothRepository Clothes {  get; private set; }
@@ -27,6 +31,10 @@ namespace Venaro.DataAccess.Repository
 		public ICategoryRepository Category { get; private set; }
 
         public ICompanyRepository Company { get; private set; }
+
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+
+        public IShoppingCartRepository ShoppingCart { get; private set; }
 
         public void Save()
 		{

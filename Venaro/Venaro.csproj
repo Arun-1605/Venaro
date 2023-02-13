@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Venaro.DataAccess\Venaro.DataAccess.csproj" />
     <ProjectReference Include="..\Venaro.Models\Venaro.Models.csproj" />
+    <ProjectReference Include="..\Venaro.Utility\Venaro.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
