@@ -54,6 +54,20 @@
 			</select>
 					<span asp-validation-for="Products.CategoryId" class="text-danger"></span>
 		</div>
+		<div class="mb-3 col-6">
+					<label asp-for="Products.ColorId"></label>
+					<select asp-for="Products.ColorId" asp-items="@Model.Colors" class="form-select">
+				<option disabled selected>--Select Category--</option>
+			</select>
+					<span asp-validation-for="Products.ColorId" class="text-danger"></span>
+		</div>
+				<div class="mb-3 col-6">
+					<label asp-for="Products.Size"></label>
+					<select asp-for="Products.Size" asp-items="@Model.Size" class="form-select">
+						<option disabled selected>--Select Category--</option>
+					</select>
+					<span asp-validation-for="Products.SizeId" class="text-danger"></span>
+				</div>
 		<div class="col-12">
 					@if (Model.Products.Id != 0)
 			{

@@ -24,7 +24,7 @@ namespace Venaro.Area.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+            IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category,Size,Colors");
 
             return View(productList);
         }
@@ -119,7 +119,7 @@ namespace Venaro.Area.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+            var productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category,Size,Colors");
             return Json(new { data = productList });
         }
 

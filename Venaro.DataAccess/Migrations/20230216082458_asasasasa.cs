@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Venaro.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class aa : Migration
+    public partial class asasasasa : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,6 +71,19 @@ namespace Venaro.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Colors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Colors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Company",
                 columns: table => new
                 {
@@ -86,6 +99,19 @@ namespace Venaro.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Company", x => x.MyProperty);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Size",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sizes = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Size", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -246,7 +272,10 @@ namespace Venaro.DataAccess.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     ListPrice = table.Column<double>(type: "float", nullable: false),
                     IsSold = table.Column<bool>(type: "bit", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    ColorsId = table.Column<int>(type: "int", nullable: false),
+                    SizeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -255,6 +284,18 @@ namespace Venaro.DataAccess.Migrations
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_Colors_ColorsId",
+                        column: x => x.ColorsId,
+                        principalTable: "Colors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_Size_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "Size",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -336,6 +377,16 @@ namespace Venaro.DataAccess.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_ColorsId",
+                table: "Products",
+                column: "ColorsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_SizeId",
+                table: "Products",
+                column: "SizeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ShoppingCart_ApplicationUserId",
                 table: "ShoppingCart",
                 column: "ApplicationUserId");
@@ -387,6 +438,12 @@ namespace Venaro.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
+                name: "Size");
         }
     }
 }

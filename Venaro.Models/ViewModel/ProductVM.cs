@@ -15,5 +15,11 @@ namespace Venaro.Models.ViewModel
 		[ValidateNever]
 		public IEnumerable<SelectListItem> Category { get; set; }
 
+		[ValidateNever]
+		public IEnumerable<SelectListItem> Size { get; set; }
+
+		[ValidateNever]
+		public IEnumerable<SelectListItem> Colors { get; set; }
+
 	}
 }

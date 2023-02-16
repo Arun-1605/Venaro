@@ -32,6 +32,20 @@ namespace Venaro.Models
 		[ValidateNever]
 		public Category Category { get; set; }
 
+		[ForeignKey("ColorsId")]
+		public int ColorId { get; set; }
+
+		[ValidateNever]
+		public Colors Colors { get; set; }
+
+
+		[ForeignKey("SizeId")]
+		public int SizeId { get; set; }
+
+		[ValidateNever]
+		public Size Size { get; set; }
+
+
 
 	}
 }

@@ -17,6 +17,8 @@ function loadDataTable() {
             { "data": "listPrice", "width": "15%" },
             { "data": "isSold", "width": "15%" },
             { "data": "category.name", "width": "15%" },
+            { "data": "size.sizes", "width": "15%" },
+            { "data": "colors.colors", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
