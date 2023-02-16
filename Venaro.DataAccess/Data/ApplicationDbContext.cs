@@ -21,5 +21,9 @@ namespace Venaro.Data
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
 
         public DbSet<Product> Products { get; set; }
-    }
+
+		public DbSet<Colors> Colors { get; set; }
+
+		public DbSet<Size> Size { get; set; }
+	}
 }

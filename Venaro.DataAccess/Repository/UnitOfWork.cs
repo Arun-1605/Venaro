@@ -22,9 +22,11 @@ namespace Venaro.DataAccess.Repository
             Company = new CompanyRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
             ShoppingCart = new ShoppingCartRepository(_db);
+			Size = new SizeRepository(_db);
+			Color = new ColorRepository(_db);
 
 
-        }
+		}
       
         public IClothRepository Clothes {  get; private set; }
       
@@ -36,7 +38,12 @@ namespace Venaro.DataAccess.Repository
 
         public IShoppingCartRepository ShoppingCart { get; private set; }
 
-        public void Save()
+
+		public ISizeRepository Size { get; private set; }
+
+		public IColorRepository Color { get; private set; }
+
+		public void Save()
 		{
 			_db.SaveChanges();
 		}

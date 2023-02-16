@@ -18,6 +18,10 @@ namespace Venaro.DataAccess.Repository.IRepository
 
         IApplicationUserRepository ApplicationUser { get; }
 
+		ISizeRepository Size { get; }
+
+		IColorRepository Color { get; }
+
 		void Save();
     }
 }
