@@ -9,6 +9,7 @@ namespace Venaro.DataAccess.Repository.IRepository
 {
 	public interface IShoppingCartRepository : IRepository<ShoppingCart>
 	{
-		
+		int IncrememtCount(ShoppingCart shoppingCart, int count);
+		int DecrementCount(ShoppingCart shoppingCart, int count);
 	}
 }

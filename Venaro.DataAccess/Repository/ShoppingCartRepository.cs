@@ -19,8 +19,18 @@ namespace Venaro.DataAccess.Repository
             _db = db;
         }
 
+		int IShoppingCartRepository.DecrementCount(ShoppingCart shoppingCart, int count)
+		{
+			shoppingCart.Count -= count;
+			return shoppingCart.Count;
+		}
 
+		int IShoppingCartRepository.IncrememtCount(ShoppingCart shoppingCart, int count)
+		{
+			shoppingCart.Count += count;
+			return shoppingCart.Count;
+		}
 
-    }
+	}
 
 }
