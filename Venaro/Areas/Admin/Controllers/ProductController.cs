@@ -39,7 +39,20 @@ namespace Venaro.Area.Admin.Controllers
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
-                })
+                } ),
+                Colors = _unitOfWork.Color.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Color,
+                    Value = i.Id.ToString()
+                }),
+                Size = _unitOfWork.Size.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Sizes,
+                    Value = i.Id.ToString()
+                }
+                
+               )
+
             };
 
             if (id == null || id == 0)

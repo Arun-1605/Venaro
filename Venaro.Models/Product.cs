@@ -33,7 +33,7 @@ namespace Venaro.Models
 		public Category Category { get; set; }
 
 		[ForeignKey("ColorsId")]
-		public int ColorId { get; set; }
+		public int ColorsId { get; set; }
 
 		[ValidateNever]
 		public Colors Colors { get; set; }
