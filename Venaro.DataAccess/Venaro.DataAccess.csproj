@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Venaro.Models\Venaro.Models.csproj" />
+    <ProjectReference Include="..\Venaro.Utility\Venaro.Utility.csproj" />
   </ItemGroup>
 
 </Project>

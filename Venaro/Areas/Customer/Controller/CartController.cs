@@ -34,7 +34,14 @@ namespace Venaro.Areas.Customer
 
 			};
 
-			return View(ShoppingCartVM);
+            foreach (var cart in ShoppingCartVM.ListItem)
+            {
+				cart.Product.Price = cart.Product.Price * cart.Count;
+
+                ShoppingCartVM.TotalAmount += (cart.Product.Price * cart.Count);
+            }
+
+            return View(ShoppingCartVM);
 		}
 	}
 }
