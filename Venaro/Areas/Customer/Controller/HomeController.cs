@@ -26,7 +26,23 @@ namespace Venaro.Areas.Customer
             return View(productList);
         }
 
-        public IActionResult Details(int productId)
+		public IActionResult MensWear()
+		{
+			IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+
+            
+
+			return View(productList);
+		}
+
+		public IActionResult WomensWear()
+		{
+			IEnumerable<Product> productList = _unitOfWork.Clothes.GetAll(includeProperties: "Category");
+
+			return View(productList);
+		}
+
+		public IActionResult Details(int productId)
         {
             ShoppingCart obj = new()
             {

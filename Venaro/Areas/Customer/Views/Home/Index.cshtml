@@ -1,5 +1,30 @@
 ﻿@model IEnumerable<Venaro.Models.Product>
 
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+	<button type="button" class="btn btn-warning">Filters</button>
+	<div class="btn-group" role="group">
+		<button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+			<a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="MensWear">Men's Wear</a>
+			<a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="WomensWear">Women's Wear</a>
+		</div>
+	</div>
+</div>
+
+@*@foreach(var product in Model)
+{
+	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+	<button type="button" class="btn btn-warning">Filters</button>
+	<div class="btn-group" role="group">
+		<button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+			<a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="MensWear">Men's Wear</a>
+			<a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="WomensWear">Women's Wear</a>
+		</div>
+	</div>
+</div>
+}
+*@
 
 <div class="row pb-3">
 	@foreach (var product in Model)

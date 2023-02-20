@@ -22,6 +22,10 @@ namespace Venaro.DataAccess.Repository.IRepository
 
 		IColorRepository Color { get; }
 
+        //IMensWearRepository MensWear { get; }
+
+        //IWomensWearRepository WomensWear { get; }
+
 		void Save();
     }
 }
