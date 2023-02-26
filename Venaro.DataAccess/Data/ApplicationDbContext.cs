@@ -25,5 +25,11 @@ namespace Venaro.Data
 		public DbSet<Colors> Colors { get; set; }
 
 		public DbSet<Size> Size { get; set; }
+
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+
+		public DbSet<OrderDetail> OrderDetail { get; set; }
+
+
 	}
 }

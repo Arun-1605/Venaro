@@ -64,7 +64,18 @@ namespace Venaro.Areas.Customer
 
             shoppingCart.ApplicationUserId = claim.Value;
 
-            _unitOfWork.ShoppingCart.Add(shoppingCart);
+            ShoppingCart cartfromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
+
+            if(cartfromDb == null)
+            {
+                _unitOfWork.ShoppingCart.Add(shoppingCart);
+            }
+            else
+            {
+                _unitOfWork.ShoppingCart.IncrememtCount(cartfromDb, shoppingCart.Count);
+            }
+
+            //_unitOfWork.ShoppingCart.Add(shoppingCart);
             _unitOfWork.Save();
           
             return RedirectToAction ("Index");

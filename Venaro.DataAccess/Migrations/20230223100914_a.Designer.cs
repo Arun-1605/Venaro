@@ -12,8 +12,8 @@ using Venaro.Data;
 namespace Venaro.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230216092907_aasasasaaa")]
-    partial class aasasasaaa
+    [Migration("20230223100914_a")]
+    partial class a
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

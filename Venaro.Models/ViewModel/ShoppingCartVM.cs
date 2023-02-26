@@ -10,6 +10,6 @@ namespace Venaro.Models.ViewModel
 	{
 		public IEnumerable<ShoppingCart> ListItem { get; set; }
 
-		public double TotalAmount { get; set; }
+		public OrderHeader OrderHeader { get; set; }
 	}
 }

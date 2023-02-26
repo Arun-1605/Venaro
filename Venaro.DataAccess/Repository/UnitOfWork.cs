@@ -24,6 +24,10 @@ namespace Venaro.DataAccess.Repository
             ShoppingCart = new ShoppingCartRepository(_db);
 			Size = new SizeRepository(_db);
 			Color = new ColorRepository(_db);
+			OrderHeader = new OrderHeaderRepository(_db);
+			OrderDetails = new OrderDetailsRepository(_db);
+
+
 
 
 		}
@@ -42,6 +46,10 @@ namespace Venaro.DataAccess.Repository
 		public ISizeRepository Size { get; private set; }
 
 		public IColorRepository Color { get; private set; }
+
+		public IOrderHeaderRepository OrderHeader { get; private set; }
+
+		public IOrderDetailsRepository OrderDetails { get; private set; }
 
 		public void Save()
 		{
