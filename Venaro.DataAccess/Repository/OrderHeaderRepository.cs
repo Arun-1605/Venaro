@@ -43,6 +43,15 @@ namespace Venaro.DataAccess
 				}
 			}
 		}
+
+		public void UpdateStipePayment(int id, string SessionId, string PaymentIntentId)
+		{
+			var OrderfromDb = _db.OrderHeaders.FirstOrDefault(x => x.Id == id);
+
+			OrderfromDb.SessionId = SessionId;
+			OrderfromDb.PaymentIntentId = PaymentIntentId;
+
+		}
 	}
 
 }

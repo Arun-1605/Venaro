@@ -12,5 +12,7 @@ namespace Venaro.DataAccess.Repository.IRepository
 		void Update(OrderHeader obj);
 
 		void UpdateStatus(int id, string OrderStatus, string? PaymentStatus = null);
+
+		void UpdateStipePayment(int id, string SessionId, string PaymentIntentId);
 	}
 }

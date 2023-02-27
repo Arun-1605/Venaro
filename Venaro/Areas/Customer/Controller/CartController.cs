@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
+using Stripe.Checkout;
 using System.Security.Claims;
 using Venaro.DataAccess.Repository.IRepository;
 using Venaro.Models;
@@ -120,9 +121,78 @@ namespace Venaro.Areas.Customer
 			}
 
 
-			_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartVM.ListItem);
+			var domain = "https://localhost:7164/";
+			var options = new SessionCreateOptions
+			{
+				LineItems = new List<SessionLineItemOptions>(),
+				
+				Mode = "payment",
+				SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
+				CancelUrl = domain + $"custoer/cart/index",
+			};
+
+			foreach(var item in ShoppingCartVM.ListItem)
+			{
+
+				var SessionLineItem = new SessionLineItemOptions
+				{
+					PriceData = new SessionLineItemPriceDataOptions
+					{
+						UnitAmount = (long)(item.Product.Price * 100),
+						Currency = "inr",
+						ProductData = new SessionLineItemPriceDataProductDataOptions
+						{
+							Name = item.Product.Name
+
+						}
+
+					},
+
+					Quantity = item.Count,
+					
+					
+					
+					// Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+					
+				};
+
+				options.LineItems.Add(SessionLineItem);
+				
+			}
+
+			var service = new SessionService();
+			Session session = service.Create(options);
+
+			_unitOfWork.OrderHeader.UpdateStipePayment(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
 			_unitOfWork.Save();
-			return RedirectToAction("Index","Home");
+			Response.Headers.Add("Location", session.Url);
+			return new StatusCodeResult(303);
+
+
+			
+		}
+
+
+		public IActionResult OrderConfirmation(int id)
+		{
+			OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(x => x.Id == id);
+
+			var service = new SessionService();
+
+			Session session = service.Get(orderHeader.SessionId);
+
+			if(session.PaymentStatus.ToLower() =="paid")
+			{
+				_unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
+				_unitOfWork.Save();
+			}
+
+
+			List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId ==
+			orderHeader.ApplicationUserId).ToList();
+			_unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
+			_unitOfWork.Save();
+			return View(id);
 		}
 
 

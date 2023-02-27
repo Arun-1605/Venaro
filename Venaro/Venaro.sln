@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venaro.DataAccess", "..\Ven
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venaro.Models", "..\Venaro.Models\Venaro.Models.csproj", "{74159C3F-93BC-46E9-AB11-D4252681845B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venaro.Utility", "..\Venaro.Utility\Venaro.Utility.csproj", "{094E5047-1FAF-41E7-8278-6D14A0F2FAE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venaro.Utility", "..\Venaro.Utility\Venaro.Utility.csproj", "{094E5047-1FAF-41E7-8278-6D14A0F2FAE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
