@@ -121,7 +121,7 @@ namespace Venaro.Areas.Customer
 			}
 
 
-			var domain = "https://localhost:7164/";
+			var domain = "https://venaro.azurewebsites.net/";
 			var options = new SessionCreateOptions
 			{
 				LineItems = new List<SessionLineItemOptions>(),
