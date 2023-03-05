@@ -128,7 +128,7 @@ namespace Venaro.Areas.Customer
 				
 				Mode = "payment",
 				SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
-				CancelUrl = domain + $"custoer/cart/index",
+				CancelUrl = domain + $"customer/cart/index",
 			};
 
 			foreach(var item in ShoppingCartVM.ListItem)
